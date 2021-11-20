@@ -1,0 +1,141 @@
+
+{% extends "base.html"%}
+{% block title %}Login Admin{% endblock %}
+
+{% block body %}
+
+
+<style>
+@charset "utf-8";
+/* CSS Document */
+
+*{
+	box-sizing: border-box;
+}
+body{
+	background-image: url("../static/imgs/bg.jpg");
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	height: 100vh;
+  /* width: max-content; */
+	overflow: hidden;
+
+	margin: 0;
+
+}
+    .container{
+  background-color: rgba(255, 253, 253, 0.4);
+  padding: 20px 40px ;
+  border-radius: 20%;
+  }
+  .form-control{
+position: relative;
+margin: 6px 0 9px;
+width: 300px;
+
+  }
+
+
+input[type=text], select {
+  width: 100%;
+  padding-top:  20px;
+   margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+label{
+  color: rgb(157, 255, 0);
+  font-size: 25px;
+  padding: 12px 20px;
+}
+input[type=password], select {
+  width: 100%;
+  padding: 12px 20px;
+   /*margin: 8px 0;*/
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+div[class=form-control] {
+  border-radius: 5px;
+
+}
+div.form-control{
+  color: aliceblue;
+}
+
+
+@media only screen and (min-width:400px){
+  body{	background-image: url("../static/imgs/bg.jpg");
+    background-position: center;
+
+}
+}
+
+
+
+</style>
+
+         <form  method="POST" action="/">
+            {{ form.hidden_tag() }}
+
+
+                  <h4 >Admin Login</h4>
+
+               <div class="col-lg-6">
+                  <div class="form-control">
+                     <label>Name</label>
+                     {% if form.Name.errors %}
+                     {% for error in form.Name.errors %}
+                     <p class="error-message text-warning">{{error}}</p>
+                     {% endfor %}
+                     {%endif %}
+                  <!--   <input type="text" name="Name"> -->
+                     {{form.Name}}
+
+
+                  </div>
+
+
+                     <label>Password</label>
+                       {% if form.Password.errors %}
+                     {% for error in form.Password.errors %}
+                     <p class="text-warning ">{{error}}</p>
+                     {% endfor %}
+                     {%endif %}
+                      {{form.Password}}
+               <!--      <input type="password" name="Password">
+                     -->
+                  </div class="form-control">
+                  {{form.submit(class="btn btn-primary")}}
+                  <!-- <button class="btn btn-primary">SignIN</button> -->
+               </div>
+
+
+     <form>
+
+
+
+{% endblock %}
